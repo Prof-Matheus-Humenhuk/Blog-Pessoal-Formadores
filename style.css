@@ -1,1 +1,210 @@
+:root{
+  --bg: #0c0b09;
+  --bg-paper: #161410;
+  --bone: #e7e2d3;
+  --rust: #a8351f;
+  --acid: #7d8a4a;
+  --concrete: #4a463e;
+  --line: rgba(231,226,211,0.18);
+}
 
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(168,53,31,0.07), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(125,138,74,0.05), transparent 45%);
+  color: var(--bone);
+  font-family: "Space Mono", monospace;
+  line-height: 1.6;
+}
+
+/* textura de ruído sutil (xerox) */
+body::before{
+  content:"";
+  position: fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:0.05;
+  z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.wrap{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ===== topo / masthead ===== */
+header.masthead{
+  padding: 56px 24px 28px;
+  text-align:center;
+  border-bottom: 3px solid var(--bone);
+  position:relative;
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  border: 1px solid var(--rust);
+  padding: 5px 12px;
+  transform: rotate(-1deg);
+}
+
+h1.site-title{
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(54px, 12vw, 108px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--bone);
+  text-shadow:
+    3px 0 0 var(--rust),
+    -2px 0 0 rgba(125,138,74,0.6);
+  filter: contrast(1.05);
+}
+
+.site-tagline{
+  margin-top: 16px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--concrete);
+  text-transform: uppercase;
+}
+.site-tagline em{
+  color: var(--bone);
+  font-style: normal;
+}
+
+/* ===== post ===== */
+article.post{
+  margin-top: 48px;
+}
+
+.post-meta{
+  display:flex;
+  gap: 16px;
+  align-items:center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--acid);
+  margin-bottom: 14px;
+}
+.post-meta::before{
+  content:"";
+  width: 10px; height: 10px;
+  background: var(--rust);
+  display:inline-block;
+}
+
+h2.post-title{
+  font-family: "Anton", sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(28px, 6vw, 42px);
+  line-height: 1.05;
+  margin: 0 0 22px;
+  color: var(--bone);
+}
+h2.post-title span{
+  color: var(--rust);
+}
+
+figure.post-image{
+  margin: 0 0 28px;
+  border: 1px solid var(--line);
+  background: var(--bg-paper);
+  padding: 6px;
+}
+figure.post-image svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+figure.post-image figcaption{
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--concrete);
+  padding: 10px 4px 2px;
+}
+
+p.post-text{
+  font-size: 15.5px;
+  color: var(--bone);
+  margin: 0 0 18px;
+}
+p.post-text::first-letter{
+  font-family:"Anton", sans-serif;
+  font-size: 46px;
+  float:left;
+  line-height: 0.8;
+  padding-right: 8px;
+  color: var(--rust);
+}
+
+.divider{
+  border:0;
+  border-top: 1px dashed var(--line);
+  margin: 36px 0;
+}
+
+/* ===== botão ===== */
+.cta-row{
+  margin-top: 32px;
+  display:flex;
+  justify-content:center;
+}
+
+button.btn-entrar{
+  font-family:"Anton", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 17px;
+  background: var(--rust);
+  color: var(--bg);
+  border: none;
+  padding: 16px 34px;
+  cursor: pointer;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+button.btn-entrar:hover{
+  background: var(--acid);
+  transform: translateY(-2px) rotate(-0.5deg);
+}
+button.btn-entrar:focus-visible{
+  outline: 3px solid var(--bone);
+  outline-offset: 4px;
+}
+button.btn-entrar:active{
+  transform: translateY(0);
+}
+
+footer.site-footer{
+  text-align:center;
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--concrete);
+}
+
+@media (prefers-reduced-motion: reduce){
+  button.btn-entrar{ transition:none; }
+}
