@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (btnEntrar) {
     btnEntrar.addEventListener("click", function () {
-      alert("Em breve: primeiras matérias do Subsolo.");
+      window.location.href = "materias.html";
     });
   }
 });
